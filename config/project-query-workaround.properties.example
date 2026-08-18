@@ -1,0 +1,14 @@
+# Runtime switch. Values: off | dry-run | rewrite
+mode=dry-run
+
+# The value Gerrit REST will see for parameter n in rewrite mode.
+targetN=100
+
+# Only rewrite requests whose original n is <= this value.
+maxOriginalN=99
+
+# Only handle this Gerrit project-query offset. 0 means the first page.
+matchOffset=0
+
+# Add X-Sungrow-Gerrit-ProjectQuery-Workaround on matched requests.
+responseHeader=true
