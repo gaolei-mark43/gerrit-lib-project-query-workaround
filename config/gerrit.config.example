@@ -1,0 +1,9 @@
+# Merge these entries into $GERRIT_SITE/etc/gerrit.config.
+# Keep any existing [httpd] settings.
+
+[httpd]
+    filterClass = com.sungrow.gerrit.projectquery.ProjectQueryWorkaroundFilter
+
+[filterClass "com.sungrow.gerrit.projectquery.ProjectQueryWorkaroundFilter"]
+    # Use an absolute path for the current Gerrit site.
+    configPath = /root/gerrit/review_site/review_site/etc/project-query-workaround.properties
