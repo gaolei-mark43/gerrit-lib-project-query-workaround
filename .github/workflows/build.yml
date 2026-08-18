@@ -1,0 +1,30 @@
+name: build
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+          cache: maven
+
+      - name: Build
+        run: mvn -B clean package
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: gerrit-lib-project-query-workaround-0.1.0
+          path: target/gerrit-lib-project-query-workaround-0.1.0.jar
+          if-no-files-found: error
